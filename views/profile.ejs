@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div id="pmain">
+        <div id="pleft">
+            <% include ./partials/footer.ejs %>
+        </div>
+        <div id="pright"> 
+                
+                <div id="rightmain">
+                    <div id="ptop">
+                        <div id="t-prof">
+                            <i id="dpchanger" style="background-color: #fff; cursor: pointer; border-radius: 50px; padding: 5px; position: absolute; top: 43%; font-size: 1.5vw; left: 15%;" class="ri-pencil-fill"></i>
+                            <div id="frem" >
+                                <form id="myForm" action="/upload" method="post" enctype="multipart/form-data">
+                                    <input style="display: none;" id="inputfile" type="file" name="image">
+                                    <input style="display: none;" type="submit" value="Submit">
+                                </form>
+                                <img src="<%= user.dp ? '../images/uploads/' + user.dp : '../images/uploads/default-img.png' %>" alt="">
+
+                            </div>
+                            <div id="data">
+                                
+                                <div id="d-name">
+                                    <div id="d-tool1">
+                                        <h4> </h4>
+                                    </div>
+                                    <div id="d-tool2">
+                                        <h4>Edit profile</h4>
+
+                                    </div>
+                                    <div id="d-tool3">
+                                        <h4>View Achive</h4>
+                                    </div>
+                                    <div id="d-tool4">
+                                        <i class="ri-settings-5-fill"></i>
+                                    </div>
+                                </div>
+                                <div id="d-number">
+                                    <div id="n-tool1">
+                                        <h3>22</h3>
+                                        <h4>posts</h4>
+                                    </div>
+                                    <div id="n-tool2">
+                                        <h3>22444</h3>
+                                        <h4>followers</h4>
+                                    </div>
+                                    <div id="n-tool3">
+                                        <h3>1</h3>
+                                        <h4>following</h4>
+                                    </div>
+                                </div>
+                                <div id="d-gmail"></div>
+                            </div>
+                        </div>
+                        <div id="t-highli"></div>     
+                    </div>
+                    <div id="pbottom"></div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <script>
+     document.querySelector("#inputfile").addEventListener("change", function() {
+    document.querySelector("#myForm").submit();
+});
+ const dpchanger = document.querySelector("#dpchanger")
+ dpchanger.addEventListener("click",function(){
+    document.querySelector("#inputfile").click()
+ });
+
+    </script>
+
+
+
+</body>
+</html>

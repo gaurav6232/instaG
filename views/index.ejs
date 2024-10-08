@@ -1,0 +1,140 @@
+
+<style>
+  #main{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  #left{
+    height: 100%;
+    width: 15%;
+    
+    
+    display: inline-block;
+
+  }
+
+  #c-bottom{
+    margin-top: 10;
+    width: 100%;
+    height: 83vh;
+    background-color: rgb(90, 89, 89);
+    position: relative;
+    padding-left: 20px;
+    padding: 50px 25px;
+    display: inline-flex;
+    
+    align-items: center;
+    justify-content: space-around;
+  }
+  .card{
+    width: 35vw;
+    min-height: 70vh;
+
+  }
+  #card-top{
+    display: flex;
+    justify-content: space-between;
+
+
+  }
+  #dot-dot{
+    width: 1.5vw;
+    height: 1.5vw;
+    background-color: yellowgreen;
+    margin-top: 20px;
+  }
+  #profile-img{
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    background-color: yellow;
+  }
+  #main-img{
+    width: 100%;
+    height: 70vh;
+    border: 1px solid #fff;
+  }
+  #right{
+    height: 100%;
+    width: 25%;
+    background-color: rgb(28, 0, 128);
+
+  }
+  
+  @media (max-width:600px) {
+      #main{
+         display: inline-block;
+      }
+
+  }
+</style>
+<link rel="stylesheet" href="../stylesheets/style.css">
+ 
+  <div id="main">
+    <div id="left">
+
+      <% include ./partials/footer.ejs %>
+
+    </div>
+    <div id="center">
+      <div id="h-center">
+        <div id="c-top">
+          <div id="storycard">
+            <img src="https://images.unsplash.com/photo-1682687980115-a37b56ea7271?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          </div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+          <div id="storycard"></div>
+        </div>
+        <div id="c-bottom">
+
+          <%user.posts.forEach(function(post){%>
+          <div class="card" >
+            <div id="card-top">
+              <div id="profile-img"></div>
+              <div id="dot-dot"></div>
+            </div>
+
+              <div id="main-img">
+                <img style="width: 100%; height: 100%; object-fit: cover; z-index: 9999;" src="/images/uploads/<%=post.image%>" class="card-img-top" alt="...">
+              </div>
+              
+              
+              
+              <div class="card-body">
+                <h5 class="card-title"> </h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+            <%})%>
+        </div>
+        
+      </div>
+    </div>
+    <div id="right">
+      <form action="/create-post" method="post" enctype="multipart/form-data">
+        <input type="text" name="imageText" placeholder="Enter caption"> 
+        <input type="file" name="image">
+        <input type="hidden" name="userId" value=""> <!-- Assuming user._id is available in your EJS template -->
+        <input type="submit" value="Create Post">
+    </form>
+    
+    </div>
+  </div>
+ 
+
+
+
